@@ -68,7 +68,7 @@ func TestRandomKey256(t *testing.T) {
 		t.Fatal(err)
 	}
 	r256 := helperRandBlock(256)
-	id, err := ring.Add("rand256", r256)
+	id, err := ring.Add("user", "rand256", r256)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -84,7 +84,7 @@ func TestRandomKey700(t *testing.T) {
 	}
 
 	r700 := helperRandBlock(700)
-	id, err := ring.Add("rand700", r700)
+	id, err := ring.Add("user", "rand700", r700)
 	if err != nil {
 		t.Fatal(err)
 	}

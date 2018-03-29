@@ -18,8 +18,8 @@ type Id interface {
 // Basic interface to a linux keyctl keyring.
 type Keyring interface {
 	Id
-	Add(string, []byte) (*Key, error)
-	Search(string) (*Key, error)
+	Add(string, string, []byte) (*Key, error)
+	Search(string, string) (*Key, error)
 	SetDefaultTimeout(uint)
 }
 

@@ -44,9 +44,9 @@ func TestStreamWriterUpdate(t *testing.T) {
 	var key *Key
 
 	for key == nil {
-		key, err = ring.Search("test218bytestream")
+		key, err = ring.Search("user", "test218bytestream")
 		if err != nil {
-			key, err = ring.Add("test218bytestream", []byte{0})
+			key, err = ring.Add("user", "test218bytestream", []byte{0})
 			if err != nil {
 				t.Fatal(err)
 			}
