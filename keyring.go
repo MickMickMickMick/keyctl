@@ -69,8 +69,8 @@ func (kr *keyring) SetDefaultTimeout(nsecs uint) {
 }
 
 // Add a new key to a keyring. The key can be searched for later by name.
-func (kr *keyring) Add(name string, key []byte) (*Key, error) {
-	r, err := add_key("user", name, key, int32(kr.id))
+func (kr *keyring) Add(keytype, name string, key []byte) (*Key, error) {
+	r, err := add_key(keytype, name, key, int32(kr.id))
 	if err == nil {
 		key := &Key{Name: name, id: keyId(r), ring: kr.id}
 		if kr.defaultTtl != 0 {
@@ -85,8 +85,8 @@ func (kr *keyring) Add(name string, key []byte) (*Key, error) {
 // Search for a key by name, this also searches child keyrings linked to this
 // one. The key, if found, is linked to the top keyring that Search() was called
 // from.
-func (kr *keyring) Search(name string) (*Key, error) {
-	id, err := searchKeyring(kr.id, name, "user")
+func (kr *keyring) Search(keytype, name string) (*Key, error) {
+	id, err := searchKeyring(kr.id, name, keytype)
 	if err == nil {
 		return &Key{Name: name, id: id, ring: kr.id}, nil
 	}
