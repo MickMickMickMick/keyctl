@@ -39,7 +39,7 @@ func (w *writer) Flush() (err error) {
 		switch t := w.key.(type) {
 		case Keyring:
 			var key Id
-			key, err = t.Add(w.name, w.Bytes())
+			key, err = t.Add("user", w.name, w.Bytes())
 			if err == nil {
 				w.key = key
 			}

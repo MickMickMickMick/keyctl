@@ -37,7 +37,7 @@ func NewReader(key *Key) io.Reader {
 
 // Open an existing key on a keyring given its name
 func OpenReader(name string, ring Keyring) (io.Reader, error) {
-	key, err := ring.Search(name)
+	key, err := ring.Search("user", name)
 	if err == nil {
 		return NewReader(key), nil
 	}
