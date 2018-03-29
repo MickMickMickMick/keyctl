@@ -98,6 +98,10 @@ func SessionKeyring() (Keyring, error) {
 	return newKeyring(keySpecSessionKeyring)
 }
 
+func UserKeyring() (Keyring, error) {
+	return newKeyring(keySpecUserKeyring)
+}
+
 // Return the current user-session keyring (part of session, but private to
 // current user)
 func UserSessionKeyring() (Keyring, error) {
